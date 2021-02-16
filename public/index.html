@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chat</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style/style.css">
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="./js/main.js" defer></script>
+    </head>
+    <body>
+        <div class="chat-fenster">
+            <div class="chat-nav">
+                <h1>Chat</h1>
+                <label for="name">Senden als</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="chat-msgs">
+                <div class="msgs">
+                    <!--Chat Messages-->
+                </div>
+                <form id="form-msg">
+                    <input type="text" name="msg" id="msg" placeholder="Enter Message..." required>
+                    <button type="submit">Senden</button>
+                </form>
+            </div>
+        </div>
+
+        
+    </body>
+</html>
