@@ -10,7 +10,6 @@ chatBlock = {
     date: new Date(),
 };
 
-var username;
 chatForm.addEventListener('submit', e=>{
     e.preventDefault();
     chatBlock.date = new Date();
@@ -38,8 +37,8 @@ function newMsg(msg, me)
     p.classList.add('msg');
     
     window.console.log(msg);
-    document.querySelector('.msgs').appendChild(p);
-     // Scroll down
+    chatMessages.appendChild(p);
+    // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
