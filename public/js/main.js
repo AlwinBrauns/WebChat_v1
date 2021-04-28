@@ -5,11 +5,6 @@ const chatForm = document.getElementById('form-msg');
 var username;
 chatForm.addEventListener('submit', e=>{
     e.preventDefault();
-    if(e.target.msg.value.length > 256)
-    {
-        alert('Nachricht zu groß!');
-        return;
-    }
     username = document.getElementById('name').value;
     if(username==='')
     {
