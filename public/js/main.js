@@ -2,20 +2,34 @@ const socket = io();
 
 const chatMessages = document.querySelector('.msgs');
 const chatForm = document.getElementById('form-msg');
+socket.on('newMsg', newMsg);
+
+chatBlock = {
+    username: "",
+    message: "",
+    date: new Date(),
+};
+
 var username;
 chatForm.addEventListener('submit', e=>{
     e.preventDefault();
-    username = document.getElementById('name').value;
-    if(username==='')
+    chatBlock.date = new Date();
+    chatBlock.username = document.getElementById('name').value;
+    if(chatBlock.username=='')
     {
         alert('\"Senden als\" bitte ausfüllen');
         return;
     }
-    socket.emit('msgSend', username.concat(':  ' + e.target.msg.value));
-    newMsg(username.concat(':  ' + e.target.msg.value));
+    chatBlock.message = e.target.msg.value
+    if((chatBlock.username + chatBlock.message + chatBlock.date.toString()).length > 1024)
+    {
+        alert('Nachricht zu groß!');
+        return;
+    }
+    socket.emit('msgSend', chatBlock);
+    newMsg(chatBlock.username.concat(':  ' + chatBlock.message));
     e.target.msg.value = '';
 });
-socket.on('newMsg', newMsg);
 
 function newMsg(msg, me)
 {

@@ -14,13 +14,14 @@ io.on('connection', socket=>{
     
     
     socket.on('msgSend', msg=>{
-        if(msg.length > 256)
+        if((msg.message + msg.username + msg.date.toString()).length > 1024)
         {
             //alert('Nachricht zu groß!');
             console.log("MESSAGE TO BIG");
         }else{
             console.log(msg);
-            socket.broadcast.emit('newMsg', msg);
+            console.log((msg.message + msg.username + msg.date.toString()).length)
+            socket.broadcast.emit('newMsg', msg.username.concat(':  ' + msg.message));
         }
     });
 });
