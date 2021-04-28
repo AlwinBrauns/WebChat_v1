@@ -26,14 +26,15 @@ chatForm.addEventListener('submit', e=>{
         return;
     }
     socket.emit('msgSend', chatBlock);
-    newMsg(chatBlock.username.concat(':  ' + chatBlock.message));
+    newMsg(chatBlock);
     e.target.msg.value = '';
 });
 
-function newMsg(msg, me)
+function newMsg(msg)
 {
+    window.console.log(msg);
     const p = document.createElement('p');
-    p.append(msg);
+    p.append((msg.username + ": " + msg.message));
     p.classList.add('msg');
     
     window.console.log(msg);

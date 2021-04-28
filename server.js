@@ -21,7 +21,7 @@ io.on('connection', socket=>{
         }else{
             console.log(msg);
             console.log((msg.message + msg.username + msg.date.toString()).length)
-            socket.broadcast.emit('newMsg', msg.username.concat(':  ' + msg.message));
+            socket.broadcast.emit('newMsg', msg);
         }
     });
 });
