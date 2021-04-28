@@ -16,11 +16,12 @@ io.on('connection', socket=>{
     socket.on('msgSend', msg=>{
         if(msg.length > 256)
         {
-            alert('Nachricht zu groß!');
-            return;
+            //alert('Nachricht zu groß!');
+            console.log("MESSAGE TO BIG");
+        }else{
+            console.log(msg);
+            socket.broadcast.emit('newMsg', msg);
         }
-        console.log(msg);
-        socket.broadcast.emit('newMsg', msg);
     });
 });
 
