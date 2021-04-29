@@ -17,6 +17,7 @@ io.on('connection', socket=>{
         if((msg.message + msg.username + msg.date.toString()).length > 1024)
         {
             //alert('Nachricht zu groß!');
+            socket.emit('msgToLong', msg);
             console.log("MESSAGE TO BIG");
         }else{
             console.log(msg);

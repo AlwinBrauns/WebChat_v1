@@ -3,6 +3,7 @@ const socket = io();
 const chatMessages = document.querySelector('.msgs');
 const chatForm = document.getElementById('form-msg');
 socket.on('newMsg', newMsg);
+socket.on('msgToLong', msgToLong);
 
 chatBlock = {
     username: "",
@@ -20,11 +21,6 @@ chatForm.addEventListener('submit', e=>{
         return;
     }
     chatBlock.message = e.target.msg.value
-    if((chatBlock.username + chatBlock.message + chatBlock.date.toString()).length > 1024)
-    {
-        alert('Nachricht zu groß!');
-        return;
-    }
     socket.emit('msgSend', chatBlock);
     e.target.msg.value = '';
 });
@@ -47,5 +43,9 @@ function newMsg(msg, me)
     chatMessages.appendChild(d);
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function msgToLong(msg){
+    alert("Deine Nachricht ist zu Lang!\n\n" + msg.message);
 }
 
