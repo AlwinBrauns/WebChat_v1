@@ -22,7 +22,7 @@ io.on('connection', socket=>{
             console.log(msg);
             console.log((msg.message + msg.username + msg.date.toString()).length)
             socket.broadcast.emit('newMsg', msg);
-            socket.emit('newMsg', msg);
+            socket.emit('newMsg', msg, true);
         }
     });
 });

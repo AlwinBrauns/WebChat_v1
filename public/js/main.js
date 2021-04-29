@@ -29,10 +29,9 @@ chatForm.addEventListener('submit', e=>{
     e.target.msg.value = '';
 });
 
-function newMsg(msg)
+function newMsg(msg, me)
 {
-    let isMe = false;
-    if(msg.username == chatBlock.username && msg.message == chatBlock.message) isMe = true;
+    let isMe = me;
 
     window.console.log(msg);
     const p = document.createElement('p');
