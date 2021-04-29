@@ -79,12 +79,22 @@ body * {
 
 .msg{
     overflow-wrap: break-word;
-    width: 100px;
-    border-style: solid;
+    width: 35%;
     padding: 0.66em;
     margin: 0.66em;
     background-color: lightgrey;
-    color: black;
+    color: #262626;
+    display: block;
+}
+
+.msglayer{
+    width: 85%;
+    overflow: hidden;
+    height: max-content;
+}
+
+.make-right{
+    float: right;
 }
 
 #msg-input{

@@ -31,13 +31,21 @@ chatForm.addEventListener('submit', e=>{
 
 function newMsg(msg)
 {
+    let isMe = false;
+    if(msg.username == chatBlock.username && msg.message == chatBlock.message) isMe = true;
+
     window.console.log(msg);
     const p = document.createElement('p');
+    const d = document.createElement('div');
     p.append((msg.username + ": " + msg.message));
     p.classList.add('msg');
-    
+    if(isMe){
+        p.classList.add('make-right');
+    }
+    d.classList.add('msglayer');
+    d.appendChild(p);
     window.console.log(msg);
-    chatMessages.appendChild(p);
+    chatMessages.appendChild(d);
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
