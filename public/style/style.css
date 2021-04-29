@@ -9,10 +9,10 @@
 
 .chat-fenster{
     width: 80%;
-    min-height: 20em;
-    max-height: 30em;
+    min-height: 30em;
+    max-height: 40em;
     background-color: #262626;
-    box-shadow: 3px 3px 4px 0px #000000;
+    box-shadow: 1px 1px 0px 0px #000000;
     margin: 1em;
     padding: 1em;
     display: flex;
@@ -29,11 +29,12 @@ body * {
 }
 
 .chat-nav{
-    border-style: solid;
+    /*border-style: solid;*/
     padding: 1em;
-    box-shadow: 3px 3px 4px 0px #000000;
+    box-shadow: 1px 1px 0px 0px #000000;
     max-width: 33%;
 }
+
 
 .chat-msgs{
     position: relative;
@@ -82,6 +83,13 @@ body * {
     border-style: solid;
     padding: 0.66em;
     margin: 0.66em;
+    background-color: lightgrey;
+    color: black;
+}
+
+#msg-input{
+    height: 3em;
+    width: 50%;
 }
 
 /* width */
