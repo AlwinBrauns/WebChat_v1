@@ -26,7 +26,6 @@ chatForm.addEventListener('submit', e=>{
         return;
     }
     socket.emit('msgSend', chatBlock);
-    newMsg(chatBlock);
     e.target.msg.value = '';
 });
 
