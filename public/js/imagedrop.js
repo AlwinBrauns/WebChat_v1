@@ -13,7 +13,7 @@ droparea.addEventListener('click', function() {
 
 hiddenInput.addEventListener('change', function(){
     var files = hiddenInput.files;
-    handleFiles(files[0]);
+    handleFiles(files);
 })
 
 droparea.addEventListener('dragenter', preventDefault,false);
@@ -45,7 +45,7 @@ function handleDrop(e) {
     let data = e.dataTransfer;
     let files = data.files;
  
-    handleFiles(files[0]);    
+    handleFiles(files);    
 }
 
 function handleFiles(file){
