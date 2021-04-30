@@ -102,6 +102,17 @@ body * {
     width: 50%;
 }
 
+#image-drop-area{
+    border: 2px dashed lightgrey;
+    font-size: small;
+    width: 20%;
+}
+
+#image-drop-area.highlight{
+    border: 2px dashed green;
+}
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

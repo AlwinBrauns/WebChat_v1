@@ -2,6 +2,7 @@ const socket = io();
 
 const chatMessages = document.querySelector('.msgs');
 const chatForm = document.getElementById('form-msg');
+
 socket.on('newMsg', newMsg);
 socket.on('msgToLong', msgToLong);
 
@@ -9,10 +10,15 @@ chatBlock = {
     username: "",
     message: "",
     date: new Date(),
+    file: null,
 };
 
 chatForm.addEventListener('submit', e=>{
     e.preventDefault();
+    
+    if(hiddenInput.files[0]){
+        chatBlock.file = hiddenInput.files[0];
+    }
     chatBlock.date = new Date();
     chatBlock.username = document.getElementById('name').value;
     if(chatBlock.username=='')
@@ -20,7 +26,7 @@ chatForm.addEventListener('submit', e=>{
         alert('\"Senden als\" bitte ausfüllen');
         return;
     }
-    chatBlock.message = e.target.msg.value
+    chatBlock.message = e.target.msg.value;
     socket.emit('msgSend', chatBlock);
     e.target.msg.value = '';
 });
@@ -28,8 +34,6 @@ chatForm.addEventListener('submit', e=>{
 function newMsg(msg, me)
 {
     let isMe = me;
-
-    window.console.log(msg);
     const p = document.createElement('p');
     const d = document.createElement('div');
     p.append((msg.username + ": " + msg.message));
@@ -43,6 +47,8 @@ function newMsg(msg, me)
     chatMessages.appendChild(d);
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
+    hiddenInput.files = undefined;
+    droparea.removeChild(info)
 }
 
 function msgToLong(msg){

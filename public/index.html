@@ -6,6 +6,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style/style.css">
+        <script src="js/imagedrop.js" defer></script>
         <script src="/socket.io/socket.io.js" defer></script>
         <script src="./js/main.js" defer></script>
     </head>
@@ -20,10 +21,14 @@
                 <div class="msgs">
                     <!--Chat Messages-->
                 </div>
-                <form id="form-msg">
-                    <input type="text" name="msg" id="msg-input" placeholder="Enter Message..." required>
-                    <button type="submit">Senden</button>
-                </form>
+                <div>
+                    <form id="form-msg">
+                        <input type="text" name="msg" id="msg-input" placeholder="Enter Message..." required/>
+                        <div id="image-drop-area">
+                        </div>
+                        <button type="submit">Senden</button>
+                    </form>
+                </div>
             </div>
         </div>
 
