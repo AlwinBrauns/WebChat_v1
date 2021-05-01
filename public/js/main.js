@@ -65,7 +65,7 @@ function newMsg(msg, me)
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
     hiddenInput.files = undefined;
-    if(document.getElementById('img-pre'))
+    if(document.getElementById('img-pre').hasChildNodes())
         document.getElementById('img-pre').removeChild(previewCanvas);
 }
 
