@@ -22,7 +22,9 @@ hiddenInput.addEventListener('change', function(e){
     
     img.onload = function(){
         URL.revokeObjectURL(this.src);
-        previewCanvas.getContext('2d').drawImage(this,0,0);
+        previewCanvas.width = img.width;
+        previewCanvas.height = img.height;
+        previewCanvas.getContext('2d').drawImage(this, 0,0);
     }
     
     img.src = url;

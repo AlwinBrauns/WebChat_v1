@@ -42,27 +42,31 @@ function newMsg(msg, me)
     const d = document.createElement('div');
     const c = document.createElement('canvas');
     p.append((msg.username + ": " + msg.message));
-
-    let ctx = c.getContext('2d');
-    c.classList.add('img-in-chat');
-    let array = new Uint8ClampedArray(msg.file.data);
-    let imgData = new ImageData(array,msg.imgWidth,msg.imgHeight);
-    ctx.putImageData(imgData,0,0);
+    if(msg.file?.data)
+    {
+        let ctx = c.getContext('2d');
+        c.classList.add('img-in-chat');
+        let array = new Uint8ClampedArray(msg.file.data);
+        let imgData = new ImageData(array,msg.imgWidth,msg.imgHeight);
+        ctx.putImageData(imgData,0,0);
+        p.appendChild(c);
+    }
 
     p.classList.add('msg');
     if(isMe){
         p.classList.add('make-right');
-        c.classList.add('make-right');
+        if(msg.file?.data)
+            c.classList.add('make-right');
     }
     d.classList.add('msglayer');
     d.appendChild(p);
-    p.appendChild(c);
     window.console.log(msg);
     chatMessages.appendChild(d);
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
     hiddenInput.files = undefined;
-    document.getElementById('img-pre').removeChild(previewCanvas);
+    if(document.getElementById('img-pre'))
+        document.getElementById('img-pre').removeChild(previewCanvas);
 }
 
 function msgToLong(msg){

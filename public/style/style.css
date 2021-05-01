@@ -122,6 +122,7 @@ body * {
 
 .img-in-chat{
     /*TODO: img style*/
+    position: relative;
 }
 
 
