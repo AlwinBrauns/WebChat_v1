@@ -15,20 +15,22 @@ hiddenInput.addEventListener('change', function(){
     handleFiles(files);
 })
 
-hiddenInput.addEventListener('change', function(e){
-    var file = e.target.files[0],
-        url = URL.createObjectURL(file),
-        img = new Image();
-    
+hiddenInput.addEventListener('change', e=> addPicToPreview(e.target.files))
+
+function addPicToPreview(files){
+    var file = files[0],
+    url = URL.createObjectURL(file),
+    img = new Image();
+
     img.onload = function(){
         URL.revokeObjectURL(this.src);
         previewCanvas.width = img.width;
         previewCanvas.height = img.height;
         previewCanvas.getContext('2d').drawImage(this, 0,0);
     }
-    
+
     img.src = url;
-})
+}
 
 droparea.addEventListener('dragenter', preventDefault,false);
 droparea.addEventListener('dragleave', preventDefault,false);
@@ -58,6 +60,7 @@ droparea.addEventListener('drop', handleDrop, false);
 function handleDrop(e) {
     let data = e.dataTransfer;
     let files = data.files;
+    addPicToPreview(files);
  
     handleFiles(files);    
 }
