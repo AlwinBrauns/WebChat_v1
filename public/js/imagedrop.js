@@ -15,8 +15,6 @@ hiddenInput.addEventListener('change', function(){
     handleFiles(files);
 })
 
-hiddenInput.addEventListener('change', e=> addPicToPreview(e.target.files))
-
 function addPicToPreview(files){
     var file = files[0],
     url = URL.createObjectURL(file),
@@ -60,12 +58,12 @@ droparea.addEventListener('drop', handleDrop, false);
 function handleDrop(e) {
     let data = e.dataTransfer;
     let files = data.files;
-    addPicToPreview(files);
  
     handleFiles(files);    
 }
 
 function handleFiles(file){
+    addPicToPreview(files);
     previewCanvas.classList.add('img-preview');
     document.getElementById('img-pre').appendChild(previewCanvas);
     window.console.log(file);
