@@ -1,8 +1,7 @@
 let droparea = document.getElementById('image-drop-area');
 
-let hiddenInput = document.createElement("input");
-
-let info = document.createElement('p');
+let hiddenInput = document.createElement('input');
+let previewCanvas = document.createElement('canvas');
 
 
 hiddenInput.type = "file";
@@ -14,6 +13,19 @@ droparea.addEventListener('click', function() {
 hiddenInput.addEventListener('change', function(){
     var files = hiddenInput.files;
     handleFiles(files);
+})
+
+hiddenInput.addEventListener('change', function(e){
+    var file = e.target.files[0],
+        url = URL.createObjectURL(file),
+        img = new Image();
+    
+    img.onload = function(){
+        URL.revokeObjectURL(this.src);
+        previewCanvas.getContext('2d').drawImage(this,0,0);
+    }
+    
+    img.src = url;
 })
 
 droparea.addEventListener('dragenter', preventDefault,false);
@@ -49,7 +61,7 @@ function handleDrop(e) {
 }
 
 function handleFiles(file){
-    info.append('Bild hinzugefügt');
-    droparea.appendChild(info);
+    previewCanvas.classList.add('img-preview');
+    document.getElementById('img-pre').appendChild(previewCanvas);
     window.console.log(file);
 }

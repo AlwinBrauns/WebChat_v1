@@ -11,13 +11,16 @@ chatBlock = {
     message: "",
     date: new Date(),
     file: null,
+    imgWidth: 0,
+    imgHeight: 0,
 };
 
 chatForm.addEventListener('submit', e=>{
     e.preventDefault();
-    
     if(hiddenInput.files[0]){
-        chatBlock.file = hiddenInput.files[0];
+        chatBlock.file = previewCanvas.getContext('2d').getImageData(0,0,previewCanvas.width, previewCanvas.height);
+        chatBlock.imgWidth = previewCanvas.width;
+        chatBlock.imgHeight = previewCanvas.height;
     }
     chatBlock.date = new Date();
     chatBlock.username = document.getElementById('name').value;
@@ -37,19 +40,29 @@ function newMsg(msg, me)
     let isMe = me;
     const p = document.createElement('p');
     const d = document.createElement('div');
+    const c = document.createElement('canvas');
     p.append((msg.username + ": " + msg.message));
+
+    let ctx = c.getContext('2d');
+    c.classList.add('img-in-chat');
+    let array = new Uint8ClampedArray(msg.file.data);
+    let imgData = new ImageData(array,msg.imgWidth,msg.imgHeight);
+    ctx.putImageData(imgData,0,0);
+
     p.classList.add('msg');
     if(isMe){
         p.classList.add('make-right');
+        c.classList.add('make-right');
     }
     d.classList.add('msglayer');
     d.appendChild(p);
+    p.appendChild(c);
     window.console.log(msg);
     chatMessages.appendChild(d);
     // Scroll down
     chatMessages.scrollTop = chatMessages.scrollHeight;
     hiddenInput.files = undefined;
-    droparea.removeChild(info)
+    document.getElementById('img-pre').removeChild(previewCanvas);
 }
 
 function msgToLong(msg){

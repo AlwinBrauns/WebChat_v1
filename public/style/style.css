@@ -48,6 +48,7 @@ body * {
     bottom: 0;
     /*background-color: brown;*/
     width: 100%;
+    max-height: 3em;
 }
 
 #form-msg *{
@@ -106,10 +107,21 @@ body * {
     border: 2px dashed lightgrey;
     font-size: small;
     width: 20%;
+    overflow: hidden;
+    max-height: inherit;
 }
 
 #image-drop-area.highlight{
     border: 2px dashed green;
+}
+
+.img-preview{
+    position: absolute;
+    transform: translate(0,0,0);
+}
+
+.img-in-chat{
+    /*TODO: img style*/
 }
 
 
