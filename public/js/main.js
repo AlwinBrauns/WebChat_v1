@@ -17,7 +17,7 @@ chatBlock = {
 
 chatForm.addEventListener('submit', e=>{
     e.preventDefault();
-    if(hiddenInput.files[0]){
+    if(gfiles){
         chatBlock.file = previewCanvas.getContext('2d').getImageData(0,0,previewCanvas.width, previewCanvas.height);
         chatBlock.imgWidth = previewCanvas.width;
         chatBlock.imgHeight = previewCanvas.height;
