@@ -37,6 +37,7 @@ chatForm.addEventListener('submit', e=>{
         alert(e);
     }
     e.target.msg.value = '';
+    chatBlock.file = null;
 });
 
 function newMsg(msg, me)
@@ -74,7 +75,6 @@ function newMsg(msg, me)
     if(document.getElementById('img-pre').hasChildNodes())
     {
         document.getElementById('img-pre').removeChild(previewCanvas);
-        chatBlock.file = null;
     }
 }
 
