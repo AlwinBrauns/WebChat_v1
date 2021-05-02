@@ -72,7 +72,10 @@ function newMsg(msg, me)
     chatMessages.scrollTop = chatMessages.scrollHeight;
     hiddenInput.files = undefined;
     if(document.getElementById('img-pre').hasChildNodes())
+    {
         document.getElementById('img-pre').removeChild(previewCanvas);
+        chatBlock.file = null;
+    }
 }
 
 function msgToLong(msg){
