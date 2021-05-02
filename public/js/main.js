@@ -38,6 +38,7 @@ chatForm.addEventListener('submit', e=>{
     }
     e.target.msg.value = '';
     chatBlock.file = null;
+    gfiles = null;
 });
 
 function newMsg(msg, me)
