@@ -80,7 +80,7 @@ body * {
 
 .msg{
     overflow-wrap: break-word;
-    width: 35%;
+    width: 44%;
     padding: 0.66em;
     margin: 0.66em;
     background-color: lightgrey;
@@ -123,6 +123,8 @@ body * {
 
 .img-in-chat{
     max-width: 100%;
+    margin: 0;
+    padding: 0;
     position: relative;
 }
 

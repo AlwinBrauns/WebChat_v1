@@ -48,6 +48,8 @@ function newMsg(msg, me)
     p.append((msg.username + ": " + msg.message));
     if(msg.file?.data)
     {
+        c.height = msg.imgHeight;
+        c.width = msg.imgWidth;
         let ctx = c.getContext('2d');
         c.classList.add('img-in-chat');
         let array = new Uint8ClampedArray(msg.file.data);
