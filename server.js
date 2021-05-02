@@ -1,11 +1,13 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const socketio = require('socket.io');
 const http = require('http');
 const path = require('path');
 
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+    maxHttpBufferSize: 1e12,
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 

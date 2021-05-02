@@ -30,8 +30,12 @@ chatForm.addEventListener('submit', e=>{
         return;
     }
     chatBlock.message = e.target.msg.value;
-    window.console.log(chatBlock.file);
-    socket.emit('msgSend', chatBlock);
+    window.console.log(chatBlock);
+    try{
+        socket.emit('msgSend', chatBlock);
+    }catch(e){
+        alert(e);
+    }
     e.target.msg.value = '';
 });
 
