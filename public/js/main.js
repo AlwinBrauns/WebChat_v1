@@ -66,6 +66,19 @@ function newMsg(msg, me)
         if(msg.file?.data)
             c.classList.add('make-right');
     }
+
+    ovl = document.createElement('div');
+    ovl.classList.add('darkOvl');
+    c.addEventListener('click', e=>{
+        if(c.classList.contains("center")){
+            c.classList.remove("center");
+            document.body.removeChild(ovl);
+        }else{
+            c.classList.add("center");
+            document.body.appendChild(ovl);
+        }
+
+    });
     d.classList.add('msglayer');
     d.appendChild(p);
     window.console.log(msg);
