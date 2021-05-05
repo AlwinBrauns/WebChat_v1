@@ -102,6 +102,7 @@ function newMsg(msg, me)
     {
         document.getElementById('img-pre').removeChild(previewCanvas);
     }
+    document.getElementById('gif-url').value = "";
 }
 
 function msgToLong(msg){
