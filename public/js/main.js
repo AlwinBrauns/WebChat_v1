@@ -71,13 +71,18 @@ function newMsg(msg, me)
     ovl.classList.add('darkOvl');
     c.addEventListener('click', e=>{
         if(c.classList.contains("center")){
-            c.classList.remove("center");
             document.body.removeChild(ovl);
+            c.classList.remove("center");
         }else{
             c.classList.add("center");
             document.body.appendChild(ovl);
         }
-
+    });
+    ovl.addEventListener('click', e=>{
+        if(c.classList.contains("center")){
+            document.body.removeChild(ovl);
+            c.classList.remove("center");
+        }
     });
     d.classList.add('msglayer');
     d.appendChild(p);
