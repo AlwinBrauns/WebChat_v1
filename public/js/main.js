@@ -83,14 +83,13 @@ function newMsg(msg, me)
             c.classList.remove("center");
         }else{
             c.classList.add("center");
+            ovl.id="current-ovl";
             document.body.appendChild(ovl);
         }
     });
     ovl.addEventListener('click', e=>{
-        if(c.classList.contains("center")){
-            document.body.removeChild(ovl);
-            c.classList.remove("center");
-        }
+        document.body.removeChild(document.getElementById("current-ovl"));
+        document.body.getElementsByClassName("center")[0].classList.remove("center");
     });
     d.classList.add('msglayer');
     d.appendChild(p);

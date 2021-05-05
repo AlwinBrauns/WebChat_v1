@@ -9,14 +9,23 @@
         <script src="js/imagedrop.js" defer></script>
         <script src="/socket.io/socket.io.js" defer></script>
         <script src="./js/main.js" defer></script>
+        <script src="./js/colorPanel.js" defer></script>
     </head>
     <body>
         <div class="chat-fenster">
             <div class="chat-nav">
                 <h1>Chat</h1>
                 <label for="name">Senden als</label>
-                <input type="text" name="name" id="name"><br/><br/><br/>
-                <label for="img-pre">Bilder vorschau:</label>
+                <input type="text" name="name" id="name">
+                <br/><br/>
+                <input id="color-bg" type="color"></input>
+                <label for="color-bg"><small>Hintergrundfarbe</small></label>
+                <input id="color-bg-alt" type="color"></input>
+                <label for="color-bg-alt"><small>Alternative Hintergrundfarbe</small></label>
+                <input id="color-font" type="color"></input>
+                <label for="color-font"><small>Schriftfarbe</small></label>
+                <br/><br/><br/>
+                <label for="img-pre"><small>Bild vorschau: </small></label>
                 <div id="img-pre"></div>
             </div>
             <div class="chat-msgs">
