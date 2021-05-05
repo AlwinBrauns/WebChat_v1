@@ -82,6 +82,7 @@ body * {
 }
 .msgs *{
     margin-left: 1em;
+    color: var(--main-bg-color);
 }
 
 .msg{

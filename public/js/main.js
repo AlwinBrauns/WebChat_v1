@@ -52,6 +52,7 @@ function newMsg(msg, me)
     const d = document.createElement('div');
     const c = document.createElement('canvas');
     const gif = document.createElement('img');
+    
     gif.src = msg.gifURL;
     p.append((msg.username + ": " + msg.message));
     if(msg.file?.data)
@@ -92,6 +93,22 @@ function newMsg(msg, me)
         document.body.getElementsByClassName("center")[0].classList.remove("center");
     });
     d.classList.add('msglayer');
+
+
+    let urls = detectURLs(msg.message);
+    if(urls){
+        for(var i = 0; i < urls.length;i++){
+            
+        let oldurl = urls[i];
+        if(!urls[i].match('^https?:\/\/')) {
+            urls[i] = 'http://' + urls[i];
+        }
+        p.innerHTML = p.innerHTML.replace(oldurl, "<a href=\""+urls[i]+"\" target=\"_blank\" >"+urls[i]+"</a>");
+        
+        }
+    }
+
+
     d.appendChild(p);
     window.console.log(msg);
     chatMessages.appendChild(d);
@@ -108,3 +125,8 @@ function newMsg(msg, me)
 function msgToLong(msg){
     alert("Deine Nachricht ist zu Lang!\n\n" + msg.message);
 }
+
+function detectURLs(message) {
+    var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+    return message.match(urlRegex)
+  }
