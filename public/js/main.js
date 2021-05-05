@@ -3,8 +3,10 @@ const socket = io();
 const chatMessages = document.querySelector('.msgs');
 const chatForm = document.getElementById('form-msg');
 
+
 socket.on('newMsg', newMsg);
 socket.on('msgToLong', msgToLong);
+
 
 chatBlock = {
     username: "",
@@ -106,4 +108,3 @@ function newMsg(msg, me)
 function msgToLong(msg){
     alert("Deine Nachricht ist zu Lang!\n\n" + msg.message);
 }
-
