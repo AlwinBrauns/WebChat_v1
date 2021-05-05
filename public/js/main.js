@@ -13,6 +13,7 @@ chatBlock = {
     file: null,
     imgWidth: 0,
     imgHeight: 0,
+    gifURL: "",
 };
 
 chatForm.addEventListener('submit', e=>{
@@ -22,6 +23,7 @@ chatForm.addEventListener('submit', e=>{
         chatBlock.imgWidth = previewCanvas.width;
         chatBlock.imgHeight = previewCanvas.height;
     }
+    chatBlock.gifURL = document.getElementById('gif-url').value;
     chatBlock.date = new Date();
     chatBlock.username = document.getElementById('name').value;
     if(chatBlock.username=='')
@@ -47,6 +49,8 @@ function newMsg(msg, me)
     const p = document.createElement('p');
     const d = document.createElement('div');
     const c = document.createElement('canvas');
+    const gif = document.createElement('img');
+    gif.src = msg.gifURL;
     p.append((msg.username + ": " + msg.message));
     if(msg.file?.data)
     {
@@ -59,7 +63,9 @@ function newMsg(msg, me)
         ctx.putImageData(imgData,0,0);
         p.appendChild(c);
     }
-
+    gif.classList.add('img-in-chat');
+    p.appendChild(gif);
+    
     p.classList.add('msg');
     if(isMe){
         p.classList.add('make-right');
